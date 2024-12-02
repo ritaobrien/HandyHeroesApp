@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Task Deletion Notification</title>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0;">
+  <table role="presentation" style="width: 100%; background-color:#81c3c9; padding: 20px; margin: 0 auto; background-color: #ffffff; border-radius: 10px; border: 2px solid #81c3c9; max-width: 600px;">
+    <tr>
+      <td style="padding: 30px; font-family: Arial, sans-serif; color: #1e3653; text-align: center;">
+        <!-- Logo -->
+        <img src="<%= asset_url('logo.png') %>" alt="Handy Heroes" style="width: 150px; height: auto; margin-bottom: 20px;" />
+        
+        <!-- Header -->
+        <h1 style="color: #1e3653; font-size: 24px; margin-top: 0;">Task Deletion Notification</h1>
+        
+        <!-- Message -->
+        <p style="font-size: 16px; line-height: 1.6; color: #1e3653; text-align: left;">
+          Hello <%= @volunteer.first_name %>,
+        </p>
+        
+        <p style="font-size: 16px; line-height: 1.6; color: #1e3653; text-align: left;">
+          We regret to inform you that the task 
+          "<strong style="color: #f37022;"><%= @task.task_type %></strong>" that you had accepted has been deleted, as the senior associated with this task has deleted their account.
+        </p>
+        
+        <p style="font-size: 16px; line-height: 1.6; color: #1e3653; text-align: left;">
+          If you have any questions or need further clarification, please don’t hesitate to reach out to us.
+        </p>
+        
+        <p style="font-size: 16px; line-height: 1.6; color: #1e3653; text-align: left;">
+          Thank you for your understanding and continued support.
+        </p>
+        
+        <!-- Closing -->
+        <p style="font-size: 16px; line-height: 1.6; color: #1e3653; text-align: left;">
+          Best regards,<br/>
+          <strong>The Handy Heroes Team</strong>
+        </p>
+        
+        <!-- Footer -->
+        <hr style="border: 0; border-top: 1px solid #81c3c9; margin: 20px 0;">
+        <p style="font-size: 14px; color: #1e3653; text-align: center; font-style: italic;">
+          <strong>Handy Heroes... Connecting Communities, One Task at a Time!</strong>
+        </p>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

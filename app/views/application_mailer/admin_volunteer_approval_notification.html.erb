@@ -1,0 +1,62 @@
+
+
+
+
+
+<table role="presentation" style="width: 80%;  padding: 20px; margin: 20px auto; border-radius: 10px; border-collapse: collapse; border-spacing: 0;">
+  <tr>
+    <td style="text-align: center; padding: 20px;">
+      <!-- Inner Table -->
+      <table style="width: 100%; max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 10px; border: 3px solid #81c3c9;">
+        <tr>
+          <td style="padding: 30px; font-family: Arial, sans-serif; color: #1e3653;">
+            <!-- Header -->
+
+<h1 style="margin-top: 0; color: #1e3653; text-align:center; font-size: 24px;">Congratulations, <%= @volunteer.first_name %> <%= @volunteer.last_name %>!</h1>
+<p style="font-family: Arial, sans-serif; font-size: 16px; color: #1e3653;">Your application as a volunteer has been approved. Thank you for your willingness to help!</p>
+<p style="font-family: Arial, sans-serif; font-size: 16px; color: #1e3653;">Your telephone number will be given to seniors for contact purposes:</p>
+<ul style="font-family: Arial, sans-serif; font-size: 16px; color:#1e3653;">
+  <li>Telephone Number: <strong style="color: #000000;"><%= @volunteer.telephone_number %></strong></li> 
+  <li>Email Address: <strong style="color: #000000;"><%= @volunteer.email %></strong></li>
+</ul>
+
+<p style="font-family: Arial, sans-serif; font-size: 16px; color: #1e3653;">Login today and start helping the seniors in your community.</p>
+<p style="font-family: Arial, sans-serif; font-size: 16px; color: #1e3653;">We really appreciate your support!</p>
+<br/>
+
+
+
+
+            <!-- Footer -->
+            <p style="font-size: 16px; line-height: 1.5; color: #1e3653;">Best regards,</p>
+            <p style="font-size: 16px; font-weight: bold; color: #1e3653;">The Handy Heroes Team</p>
+            
+            <hr style="border: 0; border-top: 1px solid #f37022; margin: 20px 0;">
+
+            <!-- Closing Line -->
+            <p style="font-size: 16px; color: #1e3653; text-align: center; font-style: italic;">
+              Handy Heroes... Connecting Communities, One Task at a Time!
+            </p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,296 @@
+<div class="container-fluid background-cover">
+  <div class="container">
+    <br/>
+    <% if current_user.senior? %>
+      <h1 class=" text-center">
+    <span class="badge custom-border-badge">
+    <img src="<%= asset_path('5.png') %>" alt="Logo Left" class="badge-logo" style="width: 75px; height: 75px;">
+
+      <%= "#{current_user.first_name.downcase.capitalize}'s Tasks" %>
+      <img src="<%= asset_path('5.png') %>" alt="Logo Left" class="badge-logo" style="width: 75px; height: 75px;">
+    </span>
+  </h1>
+      <div class="text-center mb-4">
+      <br/>
+        <%= link_to "Add New Task", new_task_path, class: "btn btn-lg mx-2", data: { turbo: false } %>
+      </div>
+      
+      <!-- Pending Tasks Section -->
+      <div class="section-container-pending">
+        <h2 class="text-center mb-3" data-bs-toggle="tooltip" title="Pending tasks are tasks that you have added that are waiting to be accepted by a Handy Heroes volunteer." data-bs-placement="right" data-bs-custom-class="tooltip-orange"><i class="bi bi-star"></i> Pending Tasks <i class="bi bi-star"></i> </h2>
+        <div class="custom-divider-orange"></div>
+ 
+        <% pending_tasks = @tasks.select { |task| task.status == "pending" } %>
+        <div class="row">
+          <% if pending_tasks.any? %>
+            <% pending_tasks.each do |task| %>
+              <div class="col-md-4 mb-4 d-flex justify-content-center">
+                <div class="card cardorange" style="max-width: 300px;">
+                  <div class-"cardimageorange">
+                  <img src="<%= category_image(task) %>" class="card-img-top" alt="Task Image" style="width: 100%; max-width: 300px; height: auto; max-height: 200px;">
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title text-center"><%= task.task_type %></h5>
+                    <br/>
+                    <p class="card-text"><strong>Description:</strong> <%= task.description.present? ? task.description : "No description provided" %></p>
+                    <p class="card-text"><strong>Task ID:</strong> <%= task.id %></p>
+                    <p class="card-text text-center">
+    
+    <span class="badge bg-orange text-center">
+        <i class="bi bi-star orangestar"></i> <!-- Filled star -->
+        <%= task.status.upcase %>
+    </span>
+</p>
+                    <div class="card-footer text-muted text-center"  style="border-top: 2px solid #f37022;">
+                      <%= link_to 'Show Details', task_path(task), class: 'btn btn-info mt-2 mb-2' %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% else %>
+            <p class="text-center">No pending tasks available at present.</p>
+          <% end %>
+        </div>
+      </div>
+      <br/>
+      <!-- Accepted Tasks Section -->
+      <div class="section-container-accepted">
+        <h2 class="text-center mb-3" data-bs-toggle="tooltip" title="Accepted tasks are your tasks that have been accepted by a Handy Heroes volunteer." data-bs-placement="right" data-bs-custom-class="tooltip-blue"><i class="bi bi-star-half"></i> Accepted Tasks <i class="bi bi-star-half"></i> </h2>
+        <div class="custom-divider-blue"></div>
+        
+        <% accepted_tasks = @tasks.select { |task| task.status == "accepted" } %>
+        <div class="row">
+          <% if accepted_tasks.any? %>
+            <% accepted_tasks.each do |task| %>
+              <div class="col-md-4 mb-4 d-flex justify-content-center">
+                <div class="card cardblue" style="max-width: 300px;">
+                <div class-"cardimagblue">
+                <img src="<%= category_image(task) %>" class="card-img-top" alt="Task Image" style="width: 100%; max-width: 300px; height: auto; max-height: 200px;">
+                 </div> <div class="card-body">
+                    <h5 class="card-title text-center"><%= task.task_type %></h5>
+                    <br/>
+                    <p class="card-text"><strong>Description:</strong> <%= task.description.present? ? task.description : "No description provided" %></p>
+                    <p class="card-text"><strong>Task ID:</strong> <%= task.id %></p>
+                    <p class="card-text text-center">
+    
+    <span class="badge bg-navy text-center">
+        <i class="bi bi-star-half bluestar"></i> <!-- Filled star -->
+        <%= task.status.upcase %>
+    </span>
+</p>
+                    
+                    <div class="card-footer text-muted text-center" style="border-top: 2px solid #81c3c9;">
+                      <%= link_to 'Show Details', task_path(task), class: 'btn btn-info mt-2 mb-2' %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% else %>
+            <p class="text-center">No accepted tasks available at present.</p>
+          <% end %>
+        </div>
+      </div>
+      <br/<
+      <!-- Completed Tasks Section -->
+      <div class="section-container-completed">
+        <h2 class="text-center mb-3" data-bs-toggle="tooltip" title="Completed tasks are your tasks that have been completed by a Handy Heroes volunteer." data-bs-placement="right" data-bs-custom-class="tooltip-gold"><i class="bi bi-star-fill"></i> Completed Tasks <i class="bi bi-star-fill"></i></h2>
+        <div class="custom-divider-gold"></div>
+    
+        <% completed_tasks = @tasks.select { |task| task.status == "completed" } %>
+        <div class="row">
+          <% if completed_tasks.any? %>
+            <% completed_tasks.each do |task| %>
+              <div class="col-md-4 mb-4 d-flex justify-content-center">
+                <div class="card cardgold" style="max-width: 300px;">
+                  <img src="<%= category_image(task) %>" class="card-img-top" alt="Task Image" style="width: 100%; max-width: 300px; height: auto; max-height: 200px;">
+                  <div class="card-body">
+                    <h5 class="card-title text-center"><%= task.task_type %></h5>
+                    <br/>
+                    <p class="card-text"><strong>Description:</strong> <%= task.description.present? ? task.description : "No description provided" %></p>
+                    <p class="card-text"><strong>Task ID:</strong> <%= task.id %></p>
+                    <p class="card-text text-center">
+    
+    <span class="badge bg-gold text-center">
+        <i class="bi bi-star-fill star"></i> <!-- Filled star -->
+        <%= task.status.upcase %>
+    </span>
+</p>
+<div class="card-footer text-muted text-center" style="border-top: 2px solid #FFD966;">
+                      <%= link_to 'Show Details', task_path(task), class: 'btn btn-info mt-3 mb-3' %>
+                      <% if task.rating.nil? %>
+  <br/><%= form_with model: task, url: rate_task_path(task), method: :patch do |f| %>
+    <div class="rating">
+      <% (1..5).each do |star| %>
+        <%= f.radio_button :rating, star, id: "rating_#{star}", class: 'star-radio', style: 'display: none;' %>
+        <%= f.label :rating, star, for: "rating_#{star}", class: 'star-label' do %>
+          <i class="bi bi-star" data-star="<%= star %>"></i> <!-- Empty star icon initially -->
+        <% end %>
+      <% end %>
+    </div>
+    <%= f.submit "Rate your Handy Hero", class: "btn mt-3", disabled: true, id: "submit-rating"  %>
+  <% end %>
+<% else %>
+  <button class="btn btn-rating mb-3" disabled>
+    <p><strong>Handy Hero Rating</strong><br/>
+      <% task.rating.times do %>
+        <i class="bi bi-star-fill star"></i> <!-- Filled star for each rating point -->
+      <% end %>
+
+      <% (5 - task.rating).times do %>
+        <i class="bi bi-star star"></i> <!-- Empty star for the remaining points -->
+      <% end %>
+    </p>
+  </button>
+<% end %>
+<br/>
+
+
+
+
+                    
+                      </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% else %>
+            <p class="text-center">No completed tasks available at present.</p>
+          <% end %>
+        </div>
+      </div>
+      
+    <% elsif current_user.volunteer? && @tasks.present? %>
+      
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="section-container-pending">  
+        <h1 class="text-center mb-4">Available Tasks in <%= "#{current_user.town}, #{current_user.county}" %></h1>
+        <div class="custom-divider-orange"></div>
+          <div class="row">
+           <% @tasks.each do |task| %>
+            <div class="col-md-4 mb-4 d-flex justify-content-center">
+              <div class="card cardorange" style="max-width: 300px;">
+                <img src="<%= category_image(task) %>" class="card-img-top" alt="Task Image" style="width: 100%; max-width: 300px; height: auto; max-height: 200px;">
+                <div class="card-body">
+                  <h5 class="card-title text-center"><%= task.task_type %></h5>
+                 
+                  <p class="card-text"><strong>Description:</strong> <%= task.description.present? ? task.description : "No description provided" %></p>
+                  <p class="card-text"><strong>Posted by:</strong> <%= task.senior.first_name %> <%= task.senior.last_name %></p>
+                  <p class="card-text">
+                  <strong>Status:</strong>
+                  <span class="badge bg-orange">
+                      <i class="bi bi-star orangestar "></i> <!-- Filled star -->
+                      <%= task.status.upcase %>
+                  </span>
+              </p>
+                  <div class="card-footer text-muted text-center" style="border-top: 2px solid #f37022; ">
+
+                      <%= link_to 'Show Details', task_path(task), class: 'btn btn-info mt-3 mb-2' %>
+                      <%= button_to 'Accept', accept_task_path(task), method: :patch, data: { confirm: 'Are you sure you want to accept this task?' }, class: 'btn btn-success mt-2 mb-3' %>
+                   
+                   </div>  
+                </div>
+              </div>
+            </div>
+            <% end %>
+          </div>
+      </div>
+      <% else %>
+      <div class="container">
+        <div class="section-container-pending">  
+          <h1 class="text-center mb-4">Available Tasks in <%= "#{current_user.town}, #{current_user.county}" %></h1>
+          <div class="custom-divider-orange"></div>
+          <div class="row">
+            <div class="col-md-12">
+              <p class="text-center">No tasks available at this time. Please check back again soon.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    
+  </div>
+  <br/>
+</div>
+
+<script>
+  document.addEventListener('turbo:load', function () {
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+      new bootstrap.Tooltip(tooltipTriggerEl, {
+        customClass: tooltipTriggerEl.getAttribute('data-bs-custom-class') // Use the custom class for the tooltip
+      });
+    });
+  });
+
+  document.querySelectorAll('.star-label').forEach(label => {
+    label.addEventListener('mouseenter', function () {
+      let rating = this.getAttribute('data-star');
+      updateStars(rating);
+    });
+
+    label.addEventListener('mouseleave', function () {
+      let rating = document.querySelector('input[name="task[rating]"]:checked');
+      if (rating) {
+        updateStars(rating.value);
+      } else {
+        resetStars();
+      }
+    });
+  });
+
+  function updateStars(rating) {
+    document.querySelectorAll('.star-label i').forEach(star => {
+      if (parseInt(star.getAttribute('data-star')) <= rating) {
+        star.classList.add('bi-star-fill');
+        star.classList.remove('bi-star');
+      } else {
+        star.classList.add('bi-star');
+        star.classList.remove('bi-star-fill');
+      }
+    });
+  }
+
+  function resetStars() {
+    document.querySelectorAll('.star-label i').forEach(star => {
+      star.classList.add('bi-star');
+      star.classList.remove('bi-star-fill');
+    });
+  }
+
+
+  document.addEventListener('turbo:load', () => {
+    const ratingRadios = document.querySelectorAll('.star-radio'); // Select all star radio buttons
+    const submitButton = document.getElementById('submit-rating'); // Select the submit button
+
+    // Function to check if a rating is selected and enable/disable the button
+    const updateButtonState = () => {
+      const isSelected = document.querySelector('.star-radio:checked') !== null;
+      submitButton.disabled = !isSelected;
+    };
+
+    // Attach event listener to each radio button
+    ratingRadios.forEach(radio => {
+      radio.addEventListener('change', updateButtonState);
+    });
+
+    // Initial check in case of pre-filled data (e.g., if editing a form)
+    updateButtonState();
+  });
+</script>
+
+
+

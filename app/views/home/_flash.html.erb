@@ -1,0 +1,20 @@
+<div class="flash-container">
+<div class="col-md-6 text-center offset-md-3"><% flash.each do |name, msg| %>
+	<% alert_class = case name.to_sym
+					 when :notice then 'alert-success'
+					 when :alert then 'alert-danger'
+					 else 'alert-warning'
+					 end %>
+	<div class="alert <%= alert_class %> alert-dismissable fade show" role="alert" style="padding-right: 35px;">
+	  <button class="close" data-bs-dismiss="alert" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%);">
+		<small>x</small>
+	  </button>
+	  <%= content_tag(:div, msg.upcase, style: "text-transform: uppercase;") %>
+	</div>
+  <% end %></div>
+</div>
+  
+
+
+
+  

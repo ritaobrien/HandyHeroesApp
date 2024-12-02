@@ -1,0 +1,399 @@
+
+<div class="container-fluid background-cover">
+<br/>
+<div class="container">
+  <h1 class=" text-center">
+    <span class="badge custom-border-badge">
+      <img src="<%= asset_path('logo.png') %>" alt="Logo Left" class="badge-logo" style="width: 75px; height: 75px;">
+      <%= "Admin's Dashboard" %>
+      <img src="<%= asset_path('logo.png') %>" alt="Logo Left" class="badge-logo" style="width: 75px; height: 75px;">
+    </span>
+  </h1>
+  <div class="tabs text-center">
+    <br/>
+    <button class="btn" onclick="toggleView('users')">Users</button>
+    <button class="btn" onclick="toggleView('tasks')">Tasks</button>
+  </div>
+  <br/>
+  <br/>
+  <div class="users-view">
+    <table class="table table-bordered table-striped text-center">
+      <thead>
+        <tr>
+          <th colspan="2"><img src="<%= asset_path('senior-orange.png') %>" alt="Logo Left" class="badge-logo" style="width: 75px; height: 75px;">  USER MANAGEMENT<img src="<%= asset_path('volunteer-gold.png') %>" alt="Logo Left" class="badge-logo" style="width: 75px; height: 75px;"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Total Users</td>
+          <td><%= @users.count %></td>
+        </tr>
+        <tr>
+          <td>Pending Volunteers</td>
+          <td><%= @pending_volunteers.count %></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br/>
+  
+    
+    <table class="table table-striped table-bordered table-hover text-center">
+      <thead>
+        <tr>
+          <th colspan="7">PENDING VOLUNTEERS</th>
+        </tr>
+        <tr>
+          <th data-sortable="true">Name</th>
+          <th data-sortable="true">County</th>
+          <th data-sortable="true">Town</th>
+          <th data-sortable="true">Email</th>
+          <th>ID Document</th> <!-- Column for ID Document -->
+          <th>Photo</th> <!-- Column for Photo -->
+          <th>Actions</th>
+        </tr>
+      </thead>
+    <tbody>
+        <% if @pending_volunteers.any? %>
+          <% @pending_volunteers.each do |volunteer| %>
+            <tr>
+              <td><%= volunteer.first_name %> <%= volunteer.last_name %></td>
+              <td><%= volunteer.county %></td>
+              <td><%= volunteer.town %></td>
+              <td><%= volunteer.email %></td>
+              <td>
+                <% if volunteer.id_document.attached? %>
+                  <%= image_tag volunteer.id_document, size: "200x200", class: "img-thumbnail" %> <!-- Thumbnail of the ID Document -->
+                  <%= link_to "Download", rails_blob_path(volunteer.id_document, disposition: "attachment") %>
+                <% else %>
+                  No ID document uploaded
+                <% end %>
+              </td>
+              <td>
+                <% if volunteer.photo_id.attached? %>
+                  <%= image_tag volunteer.photo_id, size: "200x200", class: "img-thumbnail" %> <!-- Thumbnail of the Photo -->
+                  <%= link_to "View", rails_blob_path(volunteer.photo_id, disposition: "inline"), target: "_blank" %>
+                <% else %>
+                  No photo uploaded
+                <% end %>
+              </td>
+              <td>
+                <%= button_to 'Approve', approve_volunteer_path(volunteer), method: :patch, class: "btn my-2", data: { confirm: 'Approve this volunteer?' } %>
+                <%= button_to 'Delete', destroy_volunteer_path(volunteer), method: :delete, class: "btn", data: { confirm: 'Are you sure you want to delete this volunteer?' } %>
+              </td>
+            </tr>
+          <% end %>
+        <% else %>
+          <tr>
+            <td colspan="7">No pending volunteers at present.</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+<br/>
+
+  <table class="table table-striped table-bordered table-hover text-center">
+    <thead>
+      <tr>
+      <th colspan="10">ALL USERS</th>
+      </tr>
+      <tr>
+        <th data-sortable="true">Name</th>
+        <th data-sortable="true">Email</th>
+        <th >Telephone Number</th>
+        <th data-sortable="true">County</th>
+        <th data-sortable="true">Town</th>
+        <th data-sortable="true">Role</th>
+        
+        <th>ID Document</th> <!-- New column for ID Document -->
+        <th>Photo</th> <!-- Column for Photo -->
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.first_name %> <%= user.last_name %></td>
+          <td><%= user.email %></td>
+          <td><%= user.telephone_number%></td?
+          <td><%= user.county %></td>
+          <td><%= user.town %></td>
+          <td><%= user.role.capitalize %></td>
+          <td><%= user.approved ? "Yes" : "No" %></td>
+          <td>
+            <% if user.id_document.attached? %>
+              <%= image_tag user.id_document, size: "200x200", class: "img-thumbnail" %> <!-- Thumbnail of the ID Document -->
+              <br/>
+              <%= link_to "Download", rails_blob_path(user.id_document, disposition: "attachment") %>
+            <% else %>
+              No ID document uploaded
+            <% end %>
+          </td>
+          <td>
+            <% if user.photo_id.attached? %>
+              <%= image_tag user.photo_id, size: "200x200", class: "img-thumbnail" %> <!-- Thumbnail of the Photo -->
+            <% else %>
+              No photo uploaded
+            <% end %>
+          </td>
+          <td>
+            <% if user.role == 'volunteer' && !user.approved %>
+              <%= button_to 'Approve', approve_volunteer_path(user), method: :patch, class: "btn", data: { confirm: 'Approve this volunteer?' } %>
+            <% end %>
+
+
+ 
+
+
+<%= link_to 'Delete', destroy_volunteer_path(user), 
+            data: { "turbo-method": :delete, "turbo-confirm": 'Are you sure?' }, 
+            class: "btn btn-delete mt-3 mb-3" %>
+
+            
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+</div>
+
+
+<div class="tasks-view">
+
+
+  
+<div class="container ">
+
+
+  
+
+
+      
+   
+
+<table class="table table-bordered table-striped text-center">
+<thead>
+  <tr>
+    <th colspan="2">
+      <img src="<%= asset_path('tools-logo.png') %>" alt="Logo Left" class="badge-logo" style="width: 75px; height: 75px;">
+      TASK MANAGEMENT
+      <img src="<%= asset_path('tools-logo.png') %>" alt="Logo Right" class="badge-logo" style="width: 75px; height: 75px;">
+    </th>
+  </tr>
+</thead>
+<tbody>
+  <!-- Total Tasks -->
+  <tr>
+    <td>Total Tasks</td>
+    <td><%= @tasks.count %></td>
+  </tr>
+ 
+  
+  <!-- Pending Tasks Count -->
+  <tr>
+    <td>Pending Tasks <i class="bi bi-star star"></i> </td>
+    <td>
+      <% if Task.where(status: 'pending').count.nil? || @pending_tasks_count == 0 %>
+        0
+      <% else %>
+        <%= Task.where(status: 'pending').count %>
+      <% end %>
+    </td>
+  </tr>
+
+  <!-- Accepted Tasks Count -->
+  <tr>
+    <td>Accepted Tasks <i class="bi bi-star-half star"></i> <!-- Filled star --></td>
+    <td>
+      <% if @accepted_tasks_count.nil? || @accepted_tasks_count == 0 %>
+        0
+      <% else %>
+        <%= @accepted_tasks_count %>
+      <% end %>
+    </td>
+  </tr>
+
+  <!-- Completed Tasks Count -->
+  <tr>
+    <td>Completed Tasks <i class="bi bi-star-fill star"></i> <!-- Filled star --></td>
+    <td>
+      <% if Task.where(status: 'completed').count.nil? || Task.where(status: 'completed').count == 0 %>
+        0
+      <% else %>
+        <%= Task.where(status: 'completed').count %>
+      <% end %>
+    </td>
+  </tr>
+</tbody>
+</table>
+
+<br/>
+
+<div id="pending-tasks">
+  <!-- Always Show Table Header for Pending Tasks -->
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+        <th colspan="3" class="text-center">
+          <i class="bi bi-star star"></i> PENDING TASKS <i class="bi bi-star star"></i>
+        </th>
+      </tr>
+      <tr>
+        <th data-sortable="true">Task ID</th>
+        <th data-sortable="true">Task Type</th>
+        <th data-sortable="true">Posted By</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <% if @pending_tasks.present? %>
+        <% @pending_tasks.each do |task| %>
+          <tr>
+            <td><%= task.id %></td>
+            <td><%= task.task_type %></td>
+            
+            <td><%= task.senior.nil? ? 'No User' : "#{task.senior.first_name} #{task.senior.last_name}" %></td>
+            
+           
+          </tr>
+        <% end %>
+      <% else %>
+      <tr>
+      <td colspan="5" class="text-center">No Pending Tasks</td>
+    </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+
+</div>
+
+
+
+
+<br/>
+
+<!-- Accepted Tasks Section -->
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th colspan="3" class="text-center">
+        <i class="bi bi-star-half star"></i> ACCEPTED TASKS <i class="bi bi-star-half star"></i>
+      </th>
+    </tr>
+    <tr>
+      <th data-sortable="true">Task ID</th>
+      <th data-sortable="true">Task Type</th>
+      <th data-sortable="true">Accepted By</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <% if @accepted_tasks.present? %>
+      <% @accepted_tasks.each do |task| %>
+        <tr>
+          <td><%= task.id %></td>
+          <td><%= task.task_type %></td>
+          
+
+          <td>
+            <% if task.volunteer.present? %>
+              <%= task.volunteer.first_name %> <%= task.volunteer.last_name %>
+            <% else %>
+              No volunteer assigned
+            <% end %>
+          </td>
+          
+        </tr>
+      <% end %>
+    <% else %>
+      <tr>
+        <td colspan="4" class="text-center">No Accepted Tasks</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br/>
+
+<!-- Completed Tasks Section -->
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th colspan="3" class="text-center">
+        <i class="bi bi-star-fill star"></i> COMPLETED TASKS <i class="bi bi-star-fill star"></i>
+      </th>
+    </tr>
+    <tr>
+      <th data-sortable="true">Task ID</th>
+      <th data-sortable="true">Task Type</th>
+     
+      <th data-sortable="true">Completed By</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <% if @completed_tasks.present? %>
+      <% @completed_tasks.each do |task| %>
+        <tr>
+          <td><%= task.id %></td>
+          <td><%= task.task_type %></td>
+          <td><% if task.volunteer.present? %>
+              <%= task.volunteer.first_name %> <%= task.volunteer.last_name %>
+            <% else %>
+              No volunteer assigned
+            <% end %>
+        </td>
+        </tr>
+      <% end %>
+    <% else %>
+      <tr>
+        <td colspan="4" class="text-center">No Completed Tasks</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br/>
+</div>
+</div>
+   
+</div>
+
+
+
+
+<script>
+  function toggleView(view) {
+    document.querySelector('.users-view').style.display = view === 'users' ? 'block' : 'none';
+    document.querySelector('.tasks-view').style.display = view === 'tasks' ? 'block' : 'none';
+  }
+  
+  // Default view
+  document.addEventListener('turbo:loaded', () => toggleView('users'));
+
+document.addEventListener('turbo:load', function () {
+    if (window.location.hash === '#pending-tasks') {
+      toggleView('tasks');
+    }
+  });
+
+  // After user deletion, redirect to 'users' view
+  document.addEventListener('turbo:load', function () {
+    if (window.location.hash === '#users') {
+      toggleView('users');
+    }
+  });
+  
+  document.addEventListener('turbo:load', function () {
+    var tables = document.querySelectorAll('table');
+    tables.forEach(function (table) {
+      new Tablesort(table); // Initialize Tablesort on each table
+    });
+  });
+
+ 
+
+  
+</script>

@@ -1,0 +1,58 @@
+<div class="container-fluid">
+  <h3 class="text-center mb-4">SENIOR DASHBOARD</h3>
+
+  <div class="row justify-content-center mb-4">
+    <div class="col-md-6 col-lg-4 mb-4">
+      <div class="card formcard">
+        <div class="card-header lexend-cardtitle text-center">
+          My Current Pending Jobs
+        </div>
+        <div class="card-body text-center">
+          <p>View your pending jobs below:</p>
+          <ul class="list-group">
+            <li class="list-group-item">
+              Job Title 1
+              <span class="badge badge-info float-right">In Progress</span>
+            </li>
+            <li class="list-group-item">
+              Job Title 2
+              <span class="badge badge-info float-right">In Progress</span>
+            </li>
+            <!-- Add more jobs here as needed -->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center mb-4">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#postJobModal">
+      Post a New Job
+    </button>
+    <a href="#" class="btn btn-secondary">View Completed Jobs</a>
+    <%= link_to "My Tasks", tasks_path, class: 'nav-link btn mx-2 my-2' %>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="postJobModal" tabindex="-1" role="dialog" aria-labelledby="postJobModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="postJobModalLabel">Post a New Job</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="/jobs" method="POST">
+            <div class="form-group">
+              <label for="job-title">Job Title</label>
+              <input type="text" class="form-control" id="job-title" name="job[title]" required>
+            </div>
+            <!-- Other job details fields can be added here -->
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    
+

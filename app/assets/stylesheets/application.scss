@@ -1,0 +1,1060 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ // Custom bootstrap variables must be set or imported *before* bootstrap.
+ @import "bootstrap";
+
+ body {
+    background-color:white;
+    color:#1e3653;
+    font-family: "Lexend";
+    font-weight: 250;
+  
+    font-size: 20px;
+    background-attachment: fixed;
+    
+}
+
+.intro{
+  background-color: #81c3c9;
+  border-radius: 10px;
+}
+
+
+
+.public-sans {
+  font-family: "Public Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+  font-size: 30px;
+}
+
+
+
+.lexend-title {
+  font-family: "Lexend", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: bold;
+  font-size:20px;
+  color:white;
+}
+.lexend-subtitle {
+  font-family: "Lexend", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+  font-size:30px;
+  color:white;
+}
+
+
+.lexend-cardtitle{
+  font-family: "Lexend", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size:25px;
+  color:#1e3653;
+}
+
+.nav-link{
+  color: #1e3653;
+  font-size: 10px;
+  font-family:"Public Sans"
+}
+
+.nav-item{
+  color: #1e3653;
+  font-size: 10px;
+  font-family:"Public Sans"
+}
+
+
+.card1{
+  background-color: #1e3653;
+  color: white;
+  border-style: hidden;
+}
+
+
+.rounded-top-card {
+  border-top-left-radius: 20px; /* Rounded top left corner */
+  border-top-right-radius: 20px; /* Rounded top right corner */
+  overflow: hidden; /* Ensures the content inside respects the border-radius */
+}
+.index{
+  
+  justify-content: left;
+
+}
+
+.orangebullet li::marker{
+color:#f37022;
+}
+.center{
+  text-align: center;
+
+}
+
+
+/* Default unselected stars */
+.star-label {
+  font-size: 30px;
+  color: #FFD966; /* Empty stars are grey */
+  cursor: pointer;
+   /* Smooth transition for hover and click */
+}
+
+/* Hover effect: when a user hovers over the stars, they will turn gold (filled) */
+.star-label:hover .bi {
+  color: #FFD966;/* Gold color for hover */
+}
+
+/* Make the clicked star stay filled */
+.star-radio:checked + .star-label .bi {
+  color: #FFD966; /* Selected stars will remain gold */
+}
+
+/* When hovering over the stars, show them as filled */
+.star-label:hover .bi {
+  content: '\f005'; /* Use filled star on hover */
+  color: #FFD966; /* Hover color */
+}
+
+
+
+button.btn.btn-rating {
+  background-color: white; 
+  color: #1e3653; 
+  border: 3px double #FFD966;
+  opacity: 1;
+  background-color: white;
+  font-weight: 300;
+  font-size: 20px;
+
+}
+
+
+
+
+
+
+
+
+
+
+.signup{
+  background-color: #81c3c9;
+background-image: url('bg.jpg');
+background-size: cover;          /* Ensures the image covers the entire container */
+background-position: center;     /* Centers the image */
+background-repeat: no-repeat; 
+}
+.centerslogan{
+  background-color: #81c3c9;
+  color: white;
+
+  border-radius:10px;
+  text-align: center;
+ 
+}
+
+.alert-success{
+  background-color: #81c3c9;
+  border-color: #81c3c9;
+  color: white;
+}
+
+.alert-warning{
+  background-color: #1e3653;
+  border-color: #1e3653;
+  color: #f37022;
+}
+
+.alert-danger{
+  background-color: #f37022;
+  border-color: #f37022;
+  color: #1e3653;
+}
+
+.role-image {
+  max-height: 400px; /* Adjust this value to the desired height */
+  width: auto;       /* Allows width to adjust proportionally */
+  cursor: pointer;
+  border: 10px solid transparent;
+  transition: border-color 0.3s;
+}
+
+.messages{
+  color:#1e3653;
+}
+.role-image:hover {
+  border-color:#81c3c9;
+  max-height: 300px; /* Adds a border color on hover */
+}
+.cardorange{
+  border-color: #f37022;
+  border-width: 2px;
+
+  box-shadow: 0px 25px 20px -20px rgba(0, 0, 0, 0.45);
+border-radius: 10px;
+}
+.cardimageorange{
+  border-bottom: 3px solid #f37022;
+
+}
+.cardcream{
+  background-color: #fdf8f0;
+  border-style: hidden;
+  border-radius:20px;
+}
+.cardblue{
+  border-color:#81c3c9;
+  box-shadow: 0px 25px 20px -20px rgba(0, 0, 0, 0.45);
+  border-width: 2px;
+  border-radius:10px;
+}
+
+.cardheaderorange{
+  border-color: #f37022;
+}
+  
+.cardheaderblue{
+  background-color:white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.card-footer{
+  margin: 0;
+  padding: 0;
+}
+
+.cardheadergold{
+  border-color: #FFD966;
+}
+.taskcardblue{
+  border-color:#81c3c9;
+  box-shadow: 0px 25px 20px -20px rgba(0, 0, 0, 0.45);
+  border-width: 2px;
+  card-header: color
+}
+
+
+
+.card-header-orange {
+  border-bottom: 1px solid #f37022; /* Change 'orange' to your desired color */
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+.card-header-gold {
+  border-bottom: 1px solid #FFD966; /* Change 'orange' to your desired color */
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+th {
+  cursor: url('tools-logo.png'), pointer;
+}
+
+th:hover {
+  cursor: url('tools-logo.png'), pointer;
+  color: #f37022;
+}
+
+.table{
+  box-shadow: 0px 25px 20px -20px rgba(0, 0, 0, 0.45);
+  border-radius: 10px;
+}
+.users-view {
+  display: block; /* Default to visible */
+}
+
+.tasks-view {
+  display: none; /* Hidden by default */
+}
+
+
+.cardgold{
+  border-color: #FFD966;
+  border-width: 2px;
+  box-shadow: 0px 25px 20px -20px rgba(0, 0, 0, 0.45);
+  border-radius: 10px;
+}
+.role-image {
+  width: 100px; /* Set a suitable size */
+  height: auto; /* Maintain aspect ratio */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  border: 10x solid transparent; /* Default border */
+  transition: border-color 0.3s; /* Transition for border color */
+  border-radius: 10px;
+}
+
+.role-image.selected {
+  border-color: #1e3653; /* Bootstrap primary color for selected image */
+  border: 10x solid transparent;
+}
+
+
+.role-selection {
+  margin-bottom: 20px; /* Space below role selection */
+  border: 10x solid transparent;
+}
+
+.role-option {
+  display: inline-block; 
+  margin: 10px;
+ 
+}
+
+.underlined-heading{
+  color: white;
+  text-decoration: underline;
+  text-decoration-color: white;
+}
+
+.container-fluid {
+  margin-top: -px; /* Add some spacing at the top */
+}
+
+.form-group {
+  margin-bottom: 15px; /* Add some spacing between form groups */
+}
+
+.actions {
+  margin-top: 20px; /* Add some spacing above actions */
+}
+
+.card-signup{
+  border-color: #1e3653;
+ 
+  box-shadow: 0px 25px 20px -20px rgba(0, 0, 0, 0.45);
+  background-color: #81c3c9;
+ 
+  background-image: image-url('bg_links.jpg');
+background-repeat:repeat;
+background-size: 100%;
+
+}
+
+.taskcard{
+  border-color: #1e3653;
+}
+.newtask{
+  background-image: image-url('bg_links.jpg');
+}
+
+.role-image {
+  cursor: pointer;
+
+  transition: opacity 0.2s ease;
+}
+
+.role-image.selected {
+  opacity: 1;
+  border: 10px solid #007bff; /* Highlight selected role with a blue border */
+  border-radius: 10px;}
+
+
+.formcard{
+  
+ 
+  box-shadow: 0 1px 1px rgba(0,0,0,0.08), 0 2px 2px rgba(0,0,0,0.12), 0 4px 4px rgba(0,0,0,0.16), 0 8px 8px rgba(0,0,0,0.20);
+
+  border-width: 1px;
+border-radius: 10px;
+  
+
+}
+
+
+.custom-card {
+  height: 400px; /* Set a fixed height for all cards */
+}
+
+.cardnavy{
+  border-color:#1e3653;
+
+  box-shadow: 0px 25px 20px -20px rgba(0, 0, 0, 0.45);
+
+}
+
+.role-image.selected {
+  border: 5px solid #1e3653; /* or any color you prefer */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* slight shadow effect */
+}
+
+
+
+.role-image {
+  width: 200px;  /* Adjust as needed */
+  height: auto;  /* Maintain aspect ratio */
+  max-width: 100%; /* Responsive */
+}
+.row-slogan{
+  background-color: #81c3c9;
+  text-align: center;
+}
+
+
+
+.rounded-card-img {
+  border-radius: 20px 20px 0 0; /* Top corners of the image match the card */
+}
+.card{
+  color: #1e3653;
+}
+
+.navbar{
+  margin-right:20px;
+  margin:0px;
+}
+.navbar-brand{
+  border-left:0px;
+  margin-left: 0px;
+}
+
+.customnav{
+  padding-left:50px;
+  padding-right: 50px;
+}
+
+
+.turbo-progress-bar {
+ 
+  height: 20px; /* Adjust the height as needed */
+
+  background: linear-gradient(90deg, #f37022 0%, #f37022 95%, #81c3c9 100%);
+
+
+}
+
+
+
+.card-header-pending{
+  background-color:#f37022;
+  color:#1e3653;
+  
+}
+
+.card-header-accepted{
+  background-color: #81c3c9;
+  color:#1e3653;
+  
+}
+
+
+.card-header-completed{
+  background-color:#FFD966;
+  color:#f37022;
+  
+}
+
+.table-responsive {
+  max-width: 1920px !important;
+  margin: auto;
+}
+
+
+.background-cover{
+  background-image: url('bg_links.jpg');
+  background-size: cover;         /* Ensures the image covers the viewport */
+  background-position: center;    /* Centers the background image */
+  background-attachment: fixed;   /* Keeps the image fixed while content scrolls */
+  min-height: 100vh;              /* Ensures it spans the full height of the viewport */
+  overflow-y: auto;               /* Allows content to scroll if necessary */
+  //padding: 20px;
+}
+
+.background-cover-white{
+  background-image: url('bg_white.png');
+  background-size: cover;         /* Ensures the image covers the viewport */
+  background-position: center;    /* Centers the background image */
+  background-attachment: fixed;   /* Keeps the image fixed while content scrolls */
+  min-height: 100vh;              /* Ensures it spans the full height of the viewport */
+  overflow-y: auto;               /* Allows content to scroll if necessary */
+  padding: 20px;
+}
+
+.divider {
+  width: 100%;
+  height: 2px;
+  background-color: #81c3c9;/* or your preferred color */
+  margin: 30px 0;
+}
+
+.section-container-pending {
+  background-color:white;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  color:#f37022;
+  border-radius: 20px;
+  box-shadow: 0px 25px 20px -20px rgba(0, 0, 0, 0.45);
+}
+
+
+
+
+.volunteer-photo-img {
+  object-position: center;  
+  width: 300px;          /* Adjust the size as needed */
+  height: 300px;         /* Maintain aspect ratio */
+  object-fit: cover;    /* Ensure the image doesn't stretch */
+  border-radius: 10%;   /* Makes the image rounded */
+  margin: 0 auto;       /* Center the image */
+  border: 2px solid #81c3c9;
+  padding: 10px;
+  box-shadow: 0px 25px 20px -20px rgba(0, 0, 0, 0.45);
+}
+.navy{
+  color:#1e3653;
+}
+
+.profile-photo {
+  width: 300px; /* Set the desired width */
+  height: 300px; /* Match width to maintain a square */
+  object-fit: contain; /* Ensure the image fills the circle without distortion */
+  object-position: center; /* Center the image within the circle */
+  /* Optional: Add a border to the circle */
+  
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+}
+
+
+
+.section-container-accepted {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  color:#81c3c9;
+  box-shadow: 0px 25px 20px -20px rgba(0, 0, 0, 0.45);
+}
+
+.bg-navy{
+  background-color: white;
+  color:#1e3653;
+  font-size: 20px;
+  border-color: #81c3c9;
+  border-style:double;
+  border-width: 3px;
+}
+
+.bg-orange{
+  background-color: white;
+  color:#1e3653;
+  font-size: 20px;
+  border-color: #f37022;
+  border-style:double;
+  border-width: 3px;
+}
+
+.bg-gold{
+  background-color: white;
+  color:#1e3653;
+  font-size: 20px;
+  border-color: #FFD966;
+  border-style:double;
+  border-width: 3px;
+}
+
+.star {
+  color:#FFD966; /* Change the star color */
+  font-size: 20px; /* Increase size */
+  margin-right: 5px; /* Spacing between stars */
+}
+
+.bluestar {
+  color:#81c3c9; /* Change the star color */
+  font-size: 20px; /* Increase size */
+  margin-right: 5px; /* Spacing between stars */
+}
+
+.orangestar {
+  color:#f37022; /* Change the star color */
+  font-size: 20px; /* Increase size */
+  margin-right: 5px; /* Spacing between stars */
+}
+.custom-divider-orange {
+  border-top: 3px solid #f37022; /* Orange color */
+  margin: 20px 0; /* Space above and below */
+}
+
+.custom-divider-navy{
+  border-top: 3px solid #1e3653; /* Orange color */
+  margin: 20px 0; /* Space above and below */
+}
+
+.custom-divider-blue {
+  border-top: 3px solid #81c3c9;
+  margin: 20px 0; /* Space above and below */
+}
+
+.custom-divider-gold {
+  border-top: 3px solid #FFD966; /* Orange color */
+  margin: 20px 0; /* Space above and below */
+}
+
+.section-container-completed{
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  color:#FFD966;
+  border-radius: 20px;
+  box-shadow: 0px 25px 20px -20px rgba(0, 0, 0, 0.45);
+  
+}
+
+.tooltip-inner  {
+  font-size:large;
+  font-weight: 600;
+    background-color: white; /* Match your dark blue color */
+  color: #1e3653;
+}
+
+
+.tooltip-arrow::before {
+  border-color: #f37022; /* Arrow color to match tooltip background */
+}
+
+.tooltip-arrow::after {
+  border-color: #f37022; /* Arrow color to match tooltip background */
+}
+
+.tooltip-orange{
+  background-color: #f37022;
+  border: 3px solid white;
+  
+  color:#1e3653;
+  border-radius: 10px; /* Rounded corners */
+  padding: 5px 5px; 
+  box-shadow: 0px 25px 20px -20px rgba(0, 0, 0, 0.45);
+}
+
+
+
+.tooltip-blue{
+  border: 3px solid white;
+  background-color:#81c3c9; /* Bootstrap primary color */
+  color: white; /* Text color */
+  border-radius: 10px; /* Rounded corners */
+  padding: 5px 10px; /* Padding for better spacing */
+  box-shadow: 0px 25px 20px -20px rgba(0, 0, 0, 0.45);
+}
+
+.devise-errors{
+  border:5px solid #f37022;
+  border-radius: 10px;
+}
+
+.tooltip-gold{
+  background-color: #FFD966;
+  border: 3px solid white;
+  color:#1e3653;
+  border-radius: 10px; /* Rounded corners */
+  padding: 5px 10px; 
+  box-shadow: 0px 25px 20px -20px rgba(0, 0, 0, 0.45);
+}
+
+.bg_white_transparent{
+  background-image: url('bg_white_70.png');
+  background-size: cover;         /* Ensures the image covers the viewport */
+  background-position: center;    /* Centers the background image */
+  background-attachment: fixed;   /* Keeps the image fixed while content scrolls */
+  min-height: 100vh;              /* Ensures it spans the full height of the viewport */
+  overflow-y: auto;               /* Allows content to scroll if necessary */
+  padding: 20px;
+}
+
+.card-subheader{
+  background-color: #fdf8f0;
+  color:#1e3653;
+  
+}
+
+.card-title{
+  font-size: 25px;
+}
+
+
+.infocards{
+  padding-bottom: 30px;
+ 
+}
+.btn{
+  background-color: #1e3653;
+  color:white;
+  margin-right: 10px;
+  font-size: 20px;
+  border-radius: 10px;
+  
+}
+
+.btn-delete{
+  background-color: #1e3653;
+  color:#f37022;
+ 
+}
+
+/* Error box container */
+.error-box {
+
+  color: #f37022; /* Dark red text color */
+  border: 3px solid #f37022;
+  border-style:double;
+  padding: 15px; /* Padding around the message */
+  border-radius: 10px; /* Slight rounding of corners */
+  margin-bottom: 15px; /* Space below the error box */
+  text-align: center; /* Center the entire content inside the error box */
+}
+
+/* Error title */
+.error-box h2 {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+}
+
+/* Error list styling */
+.error-box ul {
+
+  display: inline-block; /* Make the ul behave like an inline element to center it */
+  text-align: left; /* Left-align the text inside the list items */
+  list-style-type: disc; /* Show bullet points */
+  margin-left: 0; /* Remove default left margin */
+  padding-left: 20px; /* Add padding to prevent bullet points being too close to the text */
+}
+
+/* Error message items */
+.error-box ul li {
+  margin-bottom: 5px; /* Space between each error message */
+  position: relative; /* To position the pseudo-element for bullet */
+}
+
+/* Optional: Custom bullet with pseudo-element */
+.error-box ul li::before {
+  content: "";
+  color: #cc0000;
+  background-size: contain; /* Ensures the image fits inside the width and height */
+  background-repeat: no-repeat; /* Prevent image from repeating */
+  width: 20px; /* Set the width of the bullet image */
+  height: 30px; /* Set the height of the bullet image */
+  position: absolute;
+  left: -30px; /* Position the image to the left of the list item */
+  top: 50%;
+  transform: translateY(-50%); /* Vertically center the image */
+}
+
+
+.section-container-hiw{
+  color: #1e3653;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0px 25px 20px -20px rgba(0, 0, 0, 0.45);
+}
+
+.centeredtext{
+  text-align: center;
+  text-decoration: underline;
+  font-weight: 400;
+}
+.custom-border-badge {
+  background-color: white;
+  border-style:double;
+border-width: 5px;
+border-color:#81c3c9;
+  color:#1e3653;
+  padding: 10px 20px;
+ border-radius: 10px;
+ box-shadow: 0px 25px 20px -20px rgba(0, 0, 0, 0.45);
+  
+  font-weight: 400;
+}
+
+/* Add this to your CSS or SCSS file */
+.tooltip.bs-tooltip-right {
+  margin-left: 200px; /* Adjust this value to control the distance */
+}
+
+.tooltip-arrow {
+  left: -10px !important; /* Adjust the tooltip arrow to point correctly */
+}
+
+/* Optional: Add a little padding to the text */
+.error-box ul {
+  padding-left: 20px;
+}
+
+#error-explanation{
+  color:red;
+}
+
+.btn-close-x {
+  background-color: transparent; /* Make the background transparent */
+  color: #ff0000; /* Change color to red */
+  border: none; /* Remove border */
+  font-size: 1.5rem; /* Increase font size */
+  padding: 0; /* Remove padding */
+}
+
+.btn-close-x:hover {
+  color: #cc0000; /* Change color on hover */
+  cursor: pointer; /* Change cursor on hover */
+}
+
+
+
+
+
+
+
+
+
+
+.btn:hover{
+  background-color:#f26627;
+  color:white;
+  margin-right: 10px;
+}
+
+.btntable{
+  background-color: #81c3c9;
+  color:#1e3653;
+  margin-right: 10px;
+  font-size: 20px;
+  border-radius: 10px;
+ 
+}
+
+.btntable:hover{
+  background-color:#f26627;
+  color:#1e3653;
+  margin-right: 10px;
+}
+
+
+
+.tasks{
+ 
+  color: white;
+  color: red;
+}
+
+.table-hover tbody tr:hover td {
+  background: #1e3653;
+  color:white;
+  
+}
+
+.table{
+  color:#1e3653;
+ 
+  margin-top: 0px;
+  padding-top: 0px;
+}
+
+.table-bordered {
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  overflow: hidden;
+  border-color:#81c3c9;
+  margin-top: 0px;
+  margin-top: 0px;
+  padding-top: 0px;
+}
+.table tbody{
+  border-color: #81c3c9;
+  border-radius: 10px;
+}
+.table th {
+  
+  border: 0px;
+  font-size: 14pt;
+  margin-top: 0px;
+  border-color:#81c3c9;
+}
+
+.alert {
+  position: relative;
+  padding-right: 35px;
+  text-align: center;
+}
+
+.alert-success{
+  background-color: white;
+  border-color:white;
+  color:#81c3c9;
+  font-weight: 500;
+}
+
+.alert-warning{
+  background-color: white;
+  border-color:white;
+  color:#1e3653;
+  font-weight: 500;
+}
+
+.alert-danger{
+  background-color:white;
+  border-color:white;
+  color:#f37022;
+  font-weight: 500;
+}
+
+.mytasks{
+  background-image: url('bg_links.jpg');
+}
+.tasks{
+  color: #f37022;
+}
+
+.close{
+  background-color: #1e3653;
+  color: white;
+  
+}
+
+.close:hover{
+  background-color: #f37022;
+  color: white;
+  border-color: #f37022;
+}
+
+.senior{
+  border-color: #f37022;
+}
+
+.how-it-works{
+  background-image: url('bg_links.jpg');
+
+}
+.card2{
+
+  background-color:#f26627;
+  color: white;
+  
+  border-radius: 20px;
+  border-style: hidden;
+}
+
+.container-flash{
+  background-color: #f26627;
+}
+
+.footer{
+  background-color: #1e3653;
+  color:white;
+
+}
+.navbar-brand {
+  margin-left: 15px; /* Pushes the logo slightly to the left */
+}
+
+.senior-title{
+  background-color: #1e3653;
+  color: white;
+  border-color: #81c3c9;
+  
+}
+
+.how-it-works .card {
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.text-geading-orange{
+color:#f37022;
+}
+
+
+.text-geading-blue{
+color:#81c3c9;
+}
+
+.text-geading-gold{
+color:#FFD966;
+}
+
+
+
+
+.section-container-password{
+  background-color:#f8f9fa;
+  border-radius: 10px;
+border: 3px solid #1e3653;
+padding: 20px;
+box-shadow: 0px 25px 20px -20px rgba(0, 0, 0, 0.45);
+}
+
+.section-container-profile{
+  background-color:#f8f9fa;
+  border-radius: 10px;
+border: 3px solid #81c3c9;
+padding: 20px;
+box-shadow: 0px 25px 20px -20px rgba(0, 0, 0, 0.45);
+}
+
+
+
+.deleteaccount{
+  margin-left: 20px;
+  margin-right: 20px;
+  border:3px solid #f37022;
+}
+
+
+
+.site-header{
+  
+}
+.hr {
+  all: unset;  
+  background-color: #81c3c9;
+  height: 1px;
+}
+
+.hr-orange {
+  border: 5px double #f37022;
+  height: 4px; /* Set a bold thickness for the line */
+  background-color: #ff6600; /* Set the orange color */
+  width: 100%; /* Ensure the line spans the full width of the container */
+  
+} 
+
+.bi-file-excel{
+    background-color: orange;
+    border-color: #81c3c9;
+    color:white;
+}

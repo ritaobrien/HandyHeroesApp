@@ -1,0 +1,136 @@
+<div class="container-fluid background-cover">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <br/>
+            <br/>
+            <div class="card formcard">
+                <div class="card-header lexend-cardtitle text-center">
+                    <%= image_tag(
+                        current_user.senior? ? 'senior-grey.png' : 'volunteer-light-grey.png',
+                        alt: current_user.senior? ? 'Senior' : 'Volunteer',
+                        class: 'profile-role-icon',
+                        style: "width: 100%; max-width: 100px; height: auto; max-height: 100px;"
+                    ) %>
+                    <%= "#{current_user.first_name.downcase.capitalize}'s Profile" %>
+                        <%= image_tag(
+                            current_user.senior? ? 'seniorwomanright.png' : 'volrighthand.png',
+                            alt: current_user.senior? ? 'Senior' : 'Volunteer',
+                            class: 'profile-role-icon',
+                            style: "width: 100%; max-width: 100px; height: auto; max-height: 100px;"
+                        ) %>
+                </div>
+                <div class="card-body">
+                    <div class="section-container-profile">
+                    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+
+                        
+                            <%= render "devise/shared/error_messages", resource: resource %>
+
+                            <% if resource.photo_id.attached? %>
+                            <div class="field form-group text-center">
+                            
+                                <%= image_tag resource.photo_id, class: "rounded-circle profile-photo" %></div>
+                    
+                            <% end %>
+                    <div class="field form-group">
+                    <strong><%= f.label :first_name %><br/></strong>
+                    <%= f.text_field :first_name, class: "form-control", value: resource.first_name %>
+                    </div>
+
+
+<div class="field form-group">
+<strong><%= f.label :last_name %><br /> </strong>
+  <%= f.text_field :last_name, class: "form-control", value: resource.last_name %>
+</div>
+
+                       
+
+                      
+                        <div class="field form-group">
+                        <strong><%= f.label :email %><br /> </strong>
+                            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", value: resource.email %>
+                        </div>
+
+                        <!-- Editable Phone Number -->
+<div class="field form-group">
+  <strong><%= f.label :telephone_number %><br /></strong>
+  <%= f.telephone_field :telephone_number, class: "form-control", value: resource.telephone_number %>
+</div>
+                   
+                        <div class="field form-group">
+                        <strong><%= f.label :county %><br /> </strong>
+                            <span class="form-control-plaintext"><%= resource.county %></span>
+                        </div>
+
+                       
+                        <div class="field form-group">
+                        <strong> <%= f.label :town %><br /> </strong>
+                            <span class="form-control-plaintext"><%= resource.town %></span>
+                        </div>
+                        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                            <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+                        <% end %>
+
+                       
+
+                        <!-- Password Field -->
+                        <div class="field form-group">
+                        <strong><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br /> </strong>
+                            <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+                            <% if @minimum_password_length %>
+                                <br />
+                                <em><%= @minimum_password_length %> characters minimum</em>
+                            <% end %>
+                        </div>
+
+                        <div class="field form-group">
+                             <strong><%= f.label :password_confirmation %><br /> </strong>
+                            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+                        </div></div>
+<br/>
+<br/>
+ <div class="section-container-password">
+                        <div class="field form-group">
+                             <strong><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br /> </strong>
+                            <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
+                        </div>
+
+                
+                        <div class="actions text-center">
+                            <%= f.submit "Update Your Account", class: "btn" %>
+                        </div>
+                        <br/>
+                    <% end %>
+                </div>
+            </div>
+
+            <br/>
+            <div class="card formcard deleteaccount mb-3">
+                <div class="card-header lexend-cardtitle text-center">
+                    Cancel My Account
+                </div>
+                <div class="card-body text-center">
+                    <div>Unhappy? <%= button_to "Cancel My Account", registration_path(resource_name), data: { "turbo-method": :delete, "turbo-confirm": 'Are you sure?' }, class: "btn btn-delete mt-3 mb-3" %>
+      
+
+                    </div>
+            </div>
+</div>
+           
+           
+        </div>
+    </div>
+ 
+     <div class="text-center">
+        <br/>
+        <% if current_user.role == 'senior' %>
+  <%= link_to "Back to My Tasks", tasks_path, class: "btn btn-lg" %>
+<% else %>
+  <%= link_to "Back to My Tasks", my_tasks_path, class: "btn btn-lg" %>
+<% end %>
+<br/>
+<br/>     
+</div>
+</div>
+
+</div>

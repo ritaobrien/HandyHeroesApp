@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0;">
+  <table role="presentation" style="width: 100%; padding: 20px; margin: 0 auto; background-color: #ffffff; border-radius: 10px; border: 2px solid #81c3c9; max-width: 600px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+    <tr>
+      <td style="padding: 30px; text-align: center;">
+        
+
+        <!-- Header -->
+        <h1 style="color: #1e3653; font-size: 24px; margin: 0;">Task Deletion Confirmation</h1>
+<br/>
+        <!-- Message -->
+        <p style="font-size: 16px; line-height: 1.6; color: #1e3653; text-align: left; margin-top: 20px;">
+          Hello <%= @senior.first_name %>,
+        </p>
+
+        <p style="font-size: 16px; line-height: 1.6; color: #1e3653; text-align: left;">
+          We wanted to confirm that you have successfully deleted your accepted task.</p>
+          <table style="width: 50%; max-width: 600px; margin: 0 auto; border-radius: 10px; text-align:center; border: 3px double #81c3c9;">
+          <tr>
+          <td>
+          <p style="font-size: 16px; line-height: 1.5;  color: #1e3653;">
+          <strong>Task:</strong> <%= @task.task_type %><br/>
+          <strong>Task ID:</strong> <%= @task.id %><br/>
+          <% if @task.description.present? %>
+           <strong>Description:</strong> <%= @task.description %>
+          <% end %>
+          <strong>Handy Hero:</strong> <%= @volunteer.first_name %> <%= @volunteer.last_name %>
+          </p>       
+          </td>
+        </tr>
+        </table>
+        <p style="font-size: 16px; line-height: 1.6; color: #1e3653; text-align: left;">
+          Your Handy Hero, <strong><%= @volunteer.first_name %> <%= @volunteer.last_name %></strong>, has been informed that the task has been deleted.
+        </p>
+
+        <p style="font-size: 16px; line-height: 1.6; color: #1e3653; text-align: left;">
+          If you have any further questions or need assistance, please don't hesitate to reach out.
+        </p>
+
+        <!-- Closing -->
+        <p style="font-size: 16px; line-height: 1.6; color: #1e3653; text-align: left;">
+          Best regards,<br/><br/>
+          <strong>The Handy Heroes Team</strong>
+        </p>
+
+        <hr style="border: 0; border-top: 1px solid #f37022; margin: 20px 0;">
+
+        <!-- Footer -->
+        <p style="font-size: 15px; color: #1e3653; text-align: center; font-style: italic;">
+          Handy Heroes... Connecting Communities, One Task at a Time!
+        </p>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

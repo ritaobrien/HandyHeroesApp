@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Task Created</title>
+</head>
+<body style="background-color: #f4f4f4; font-family: Arial, sans-serif; margin: 0; padding: 0;">
+  <table role="presentation" style="width: 80%; background-color:#81c3c9; padding: 20px; margin: 20px auto; border-radius: 10px; border-collapse: collapse; border-spacing: 0;">
+    <tr>
+      <td style="text-align: center; padding: 20px;">
+        <!-- Inner Table -->
+        <table style="width: 100%; max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 10px; border: 2px solid #fafafa;">
+          <tr>
+            <td style="padding: 30px; font-family: Arial, sans-serif; color: #1e3653;">
+              
+
+              <!-- Header -->
+              <h3 style="margin-top: 0; color: #1e3653; font-size: 22px;">Hello <%= @volunteer.first_name %>,</h3>
+
+              <!-- Introduction -->
+              <p style="font-size: 16px; color: #1e3653; line-height: 1.6;">
+                We wanted to let you know that a new task is available in <%= @volunteer.town %>, Co. <%= @volunteer.county %>.
+              </p>
+<br/>
+              
+              <table style="width: 50%; max-width: 600px; margin: 0 auto; padding-left:30px; padding-right:20px;  border: 3px double #f37022; border-radius:10px  ">
+<tr>
+<td>
+              <!-- Task Information -->
+              <p style="font-size: 16px; color: #1e3653; line-height: 1.6;"><strong>Task:</strong> <%= @task.task_type %></p>
+              <p style="font-size: 16px; color: #1e3653; line-height: 1.6;"><strong>Task ID:</strong> <%= @task.id %></p>
+              <p style="font-size: 16px; color: #1e3653; line-height: 1.6;"><% if @task.description.present? %>
+               <strong>Description:</strong> <%= @task.description %>
+              <% end %></p>
+              <p style="font-size: 16px; color: #1e3653; line-height: 1.6;"><strong>Posted By:</strong> <%= @task.senior.first_name %> <%= @task.senior.last_name %></p>
+</td>
+</tr>
+</table>
+       <br/>     
+
+              <!-- Call to Action -->
+              <p style="font-size: 16px; color: #1e3653; line-height: 1.6;">
+                If you are available to lend a hand, please log in to your account and accept the task. Your help would be greatly appreciated!
+              </p>
+
+              <!-- Appreciation Message -->
+              <p style="font-size: 16px; color: #1e3653; line-height: 1.6;">
+                Thank you for being part of the Handy Heroes community. Every bit of help makes a big difference!
+              </p>
+
+              <!-- Closing -->
+              <br/>
+              <p style="font-size: 16px; color: #1e3653; line-height: 1.6;">Best regards,</p>
+       
+              <p style="font-size: 16px; color: #1e3653; font-weight: bold;">The Handy Heroes Team</p>
+
+              <hr style="border: 0; border-top: 1px solid #f37022; margin: 20px 0;">
+
+              <!-- Footer -->
+              <p style="font-size: 16px; color: #1e3653; text-align: center; font-style: italic;">
+                Handy Heroes... Connecting Communities, One Task at a Time!
+              </p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

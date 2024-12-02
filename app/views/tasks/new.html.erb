@@ -1,0 +1,40 @@
+<% content_for :title, "New Task" %>
+
+<div class="container-fluid newtask d-flex flex-column" style="min-height: 100vh;"">
+
+  <div class="container mt-4">
+    <div class="row justify-content-center">  
+      <div class="col-lg-10">
+      <br/>
+        <div class="card formcard taskcard px-0 py-0">
+            <div class="card-header">
+              <h1 class="card-title" data-bs-toggle="tooltip" title="Select a Task Category and Task Type from the dropdown menu and Click Create Task." data-bs-placement="top" data-bs-custom-class="tooltip-orange">New Task</h1>
+            </div>
+          
+                 <div class="card-body">
+              <%= render "form", task: @task %>
+            </div>
+
+            <div class="card-footer text-end">
+              <%= link_to "Back to Tasks", tasks_path, class: "btn mt-2 mb-2" %>
+            </div>
+        </div>
+      </div>
+    </div>
+    <br/>
+    <br/>
+    <br/>
+  </div>
+</div>
+
+
+<script>
+  document.addEventListener('turbo:load', function () {
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+      new bootstrap.Tooltip(tooltipTriggerEl, {
+        customClass: tooltipTriggerEl.getAttribute('data-bs-custom-class') // Use the custom class for the tooltip
+      });
+    });
+  });
+</script>

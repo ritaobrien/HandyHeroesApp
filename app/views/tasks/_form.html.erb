@@ -1,0 +1,82 @@
+<%= form_with(model: task) do |form| %>
+  <% if task.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+        <% task.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+
+<div class="form-group">
+  <%= form.label :task_category %>
+  <%= form.select :task_category, options_for_select(['Electrical', 'Plumbing', 'Gardening', 'Decorating']), { prompt: 'Select Category' }, { class: 'form-control', id: 'category-select', data: { behavior: 'category-select' } } %>
+</div>
+
+
+<div class="form-group">
+  <%= form.label :task_type %>
+  <%= form.select :task_type, [], { prompt: 'Select Task Type' }, { class: 'form-control', id: 'task-type-select', data: { behavior: 'task-type-select' } } %>
+</div>
+
+
+
+
+<div class="form-group">
+  <%= form.label :description, style: "display: block"  %>
+  <%= form.text_field :description , class: "form-control" %>
+</div>
+
+<script>
+document.addEventListener("turbo:load", function() {
+    const categorySelect = document.querySelector('[data-behavior="category-select"]');
+    const taskTypeSelect = document.querySelector('[data-behavior="task-type-select"]');
+  
+    // Define task types for each category
+    const taskTypes = {
+      'Electrical': ['Change bulb', 'Fix switch', 'Install wiring'],
+      'Plumbing': ['Fix leak', 'Central heating', 'Clear drain'],
+      'Gardening': ['Plant flowers', 'Trim hedge', 'Mow lawn'],
+      'Decorating': ['Paint wall', 'Hang picture', 'Put up shelf']
+    };
+  
+    categorySelect.addEventListener("change", function() {
+      const selectedCategory = categorySelect.value;
+  
+      // Clear the task_type options
+      taskTypeSelect.innerHTML = '';
+  
+      // Add the prompt option
+      const promptOption = document.createElement('option');
+      promptOption.text = 'Select Task Type';
+      promptOption.value = '';
+      taskTypeSelect.add(promptOption);
+  
+      // Populate task_type based on the selected category
+      if (taskTypes[selectedCategory]) {
+        taskTypes[selectedCategory].forEach(function(task) {
+          const option = document.createElement('option');
+          option.text = task;
+          option.value = task;
+          taskTypeSelect.add(option);
+        });
+      }
+    });
+  });
+
+
+</script>
+
+
+
+
+
+  <div>
+    <%= form.submit "Create Task", class: "btn" %>
+  </div>
+<% end %>

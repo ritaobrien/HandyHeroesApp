@@ -1,0 +1,9 @@
+<%# app/views/tasks/rate.html.erb %>
+<h1>Rate the Volunteer for Task: <%= @task.description %></h1>
+<%= form_with url: rate_task_path(@task), method: :patch do |f| %>
+  <div>
+    <%= f.label :rating, "Rate the Volunteer (1-5):" %>
+    <%= f.number_field :rating, min: 1, max: 5, required: true %>
+  </div>
+  <%= f.submit 'Submit Rating' %>
+<% end %>

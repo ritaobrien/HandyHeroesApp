@@ -1,0 +1,79 @@
+<div class="container-fluid">
+  <h3 class="text-center mb-4">VOLUNTEER DASHBOARD</h3>
+
+  <div class="row justify-content-center mb-4">
+    <div class="col-md-8">
+      <div class="card formcard">
+        <div class="card-header lexend-cardtitle text-center">
+          Available Jobs in Your Town
+        </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <input type="text" class="form-control" id="search-jobs" placeholder="Search jobs..." aria-label="Search jobs">
+          </div>
+          <ul class="list-group" id="job-list">
+            <!-- Job Item Example -->
+            <li class="list-group-item d-flex justify-content-between align-items-center" data-town="YourTownName">
+              Job Title 1 - Town Name
+              <div>
+                <span class="badge badge-info">Pending</span>
+                <button type="button" class="btn btn-success btn-sm ml-2" data-job-id="1" onclick="acceptJob(1)">Accept</button>
+              </div>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center" data-town="YourTownName">
+              Job Title 2 - Town Name
+              <div>
+                <span class="badge badge-info">Pending</span>
+                <button type="button" class="btn btn-success btn-sm ml-2" data-job-id="2" onclick="acceptJob(2)">Accept</button>
+              </div>
+            </li>
+            <!-- Additional job items would go here -->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center">
+    <a href="#" class="btn btn-primary">View Accepted Jobs</a>
+  </div>
+</div>
+
+<script>
+  // Simulated user town (this should come from the user profile)
+  const userTown = "YourTownName"; // Change to the actual user's town
+
+  // Filter jobs by user's town
+  document.addEventListener("DOMContentLoaded", function() {
+    const jobList = document.getElementById('job-list');
+    const jobs = jobList.querySelectorAll('.list-group-item');
+
+    jobs.forEach(job => {
+      if (job.dataset.town !== userTown) {
+        job.style.display = 'none'; // Hide jobs not in user's town
+      }
+    });
+
+    // Search functionality
+    const searchInput = document.getElementById('search-jobs');
+    searchInput.addEventListener('input', function() {
+      const searchTerm = this.value.toLowerCase();
+      jobs.forEach(job => {
+        const jobTitle = job.textContent.toLowerCase();
+        if (jobTitle.includes(searchTerm) && job.dataset.town === userTown) {
+          job.style.display = ''; // Show job if it matches the search and town
+        } else {
+          job.style.display = 'none'; // Hide if it doesn't match
+        }
+      });
+    });
+  });
+
+  // Function to handle job acceptance
+  function acceptJob(jobId) {
+    if (confirm("Are you sure you want to accept this job?")) {
+      // Here you would typically send a request to your backend
+      alert(`Job ${jobId} accepted!`);
+    }
+  }
+</script>

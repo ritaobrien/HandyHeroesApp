@@ -1,0 +1,171 @@
+<div class="container-fluid background-cover">
+  <div class="container">
+    <br/>
+    <% if current_user.senior? %>
+      <h1 class="display-4 text-center"><%= "#{current_user.first_name}'s Tasks" %></h1>
+      <div class="text-center mb-4">
+        <%= link_to "Add New Task", new_task_path, class: "btn btn-lg mx-2" %>
+      </div>
+      
+      <!-- Pending Tasks Section -->
+      <div class="section-container-pending">
+        <h2 class="text-center mb-3" data-bs-toggle="tooltip" title="Pending tasks are tasks that you have added that are waiting to be accepted by a Handy Heroes volunteer." data-bs-placement="right" data-bs-custom-class="tooltip-orange">Pending Tasks</h2>
+        <div class="custom-divider-orange"></div>
+ 
+        <% pending_tasks = @tasks.select { |task| task.status.strip.downcase == "pending" } %>
+        <div class="row">
+          <% if pending_tasks.any? %>
+            <% pending_tasks.each do |task| %>
+              <div class="col-md-4 mb-4 d-flex justify-content-center">
+                <div class="card cardorange" style="max-width: 300px;">
+                  <img src="<%= category_image(task.task_category) %>" class="card-img-top" alt="Task Image" style="width: 100%; max-width: 300px; height: auto; max-height: 200px;">
+                  <div class="card-body">
+                    <h5 class="card-title text-center"><%= task.task_type %></h5>
+                    <p class="card-text"><strong>Description:</strong> <%= task.description.present? ? task.description : "No description provided" %></p>
+                    <p class="card-text"><strong>Status:</strong> <%= task.status %></p>
+                    <div class="text-center card-footer">
+                      <%= link_to 'Show Details', task_path(task), class: 'btn btn-info' %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% else %>
+            <p class="text-center">No pending tasks available at present.</p>
+          <% end %>
+        </div>
+      </div>
+      
+      <!-- Accepted Tasks Section -->
+      <div class="section-container-accepted">
+        <h2 class="text-center mb-3" data-bs-toggle="tooltip" title="Accepted tasks are your tasks that have been accepted by a Handy Heroes volunteer." data-bs-placement="right" data-bs-custom-class="tooltip-blue">Accepted Tasks</h2>
+        <div class="custom-divider-blue"></div>
+        
+        <% accepted_tasks = @tasks.select { |task| task.status.strip.downcase == "accepted" } %>
+        <div class="row">
+          <% if accepted_tasks.any? %>
+            <% accepted_tasks.each do |task| %>
+              <div class="col-md-4 mb-4 d-flex justify-content-center">
+                <div class="card cardblue" style="max-width: 300px;">
+                  <img src="<%= category_image(task.task_category) %>" class="card-img-top" alt="Task Image" style="width: 100%; max-width: 300px; height: auto; max-height: 200px;">
+                  <div class="card-body">
+                    <h5 class="card-title text-center"><%= task.task_type %></h5>
+                    <p class="card-text"><strong>Description:</strong> <%= task.description.present? ? task.description : "No description provided" %></p>
+                    <p class="card-text"><strong>Status:</strong> <%= task.status %></p>
+                    <div class="text-center card-footer">
+                      <%= link_to 'Show Details', task_path(task), class: 'btn btn-info' %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% else %>
+            <p class="text-center">No accepted tasks available at present.</p>
+          <% end %>
+        </div>
+      </div>
+      
+      <!-- Completed Tasks Section -->
+      <div class="section-container-completed">
+        <h2 class="text-center mb-3" data-bs-toggle="tooltip" title="Completed tasks are your tasks that have been completed by a Handy Heroes volunteer." data-bs-placement="right" data-bs-custom-class="tooltip-gold">Completed Tasks</h2>
+        <div class="custom-divider-gold"></div>
+    
+        <% completed_tasks = @tasks.select { |task| task.status.strip.downcase == "completed" } %>
+        <div class="row">
+          <% if completed_tasks.any? %>
+            <% completed_tasks.each do |task| %>
+              <div class="col-md-4 mb-4 d-flex justify-content-center">
+                <div class="card cardgold" style="max-width: 300px;">
+                  <img src="<%= category_image(task.task_category) %>" class="card-img-top" alt="Task Image" style="width: 100%; max-width: 300px; height: auto; max-height: 200px;">
+                  <div class="card-body">
+                    <h5 class="card-title text-center"><%= task.task_type %></h5>
+                    <p class="card-text"><strong>Description:</strong> <%= task.description.present? ? task.description : "No description provided" %></p>
+                    
+                    <p class="card-text">
+    <strong>Status:</strong>
+    <span class="badge bg-navy">
+        <i class="bi bi-star-fill star"></i> <!-- Filled star -->
+        <%= task.status.upcase %>
+    </span>
+</p>
+                    <div class="text-center">
+                      <%= link_to 'Show Details', task_path(task), class: 'btn btn-info' %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% else %>
+            <p class="text-center">No completed tasks available at present.</p>
+          <% end %>
+        </div>
+      </div>
+      
+    <% elsif current_user.volunteer? && @tasks.present? %>
+      
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="section-container-pending">  
+        <h1 class="display-4 text-center mb-4">Available Tasks in <%= "#{current_user.town}, #{current_user.county}" %></h1>
+        <div class="custom-divider-orange"></div>
+        <div class="row">
+          <% @tasks.each do |task| %>
+            <div class="col-md-4 mb-4 d-flex justify-content-center">
+              <div class="card" style="max-width: 300px;">
+                <img src="<%= category_image(task.task_category) %>" class="card-img-top" alt="Task Image" style="width: 100%; max-width: 300px; height: auto; max-height: 200px;">
+                <div class="card-body">
+                  <h5 class="card-title text-center"><%= task.task_type %></h5>
+                  <p class="card-text"><strong>Category:</strong> <%= task.task_category %></p>
+                  <p class="card-text"><strong>Description:</strong> <%= task.description.present? ? task.description : "No description provided" %></p>
+                  <p class="card-text"><strong>Posted by:</strong> <%= task.senior.first_name %> <%= task.senior.last_name %></p>
+                  <div class="text-center card-footer">
+                  <%= link_to 'Show Details', task_path(task), class: 'btn btn-info' %>
+                  <%= button_to 'Accept', accept_task_path(task), method: :patch, data: { confirm: 'Are you sure you want to accept this task?' }, class: 'btn btn-success mt-3' %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <% else %>
+      <div class="container">
+        <div class="section-container-pending">  
+          <h1 class="display-4 text-center mb-4">Available Tasks in <%= "#{current_user.town}, #{current_user.county}" %></h1>
+          <div class="custom-divider-orange"></div>
+          <div class="row">
+            <div class="col-md-12">
+              <p class="text-center">No tasks available at this time. Please check back again soon.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+      new bootstrap.Tooltip(tooltipTriggerEl, {
+        customClass: tooltipTriggerEl.getAttribute('data-bs-custom-class') // Use the custom class for the tooltip
+      });
+    });
+  });
+</script>
+
+
+

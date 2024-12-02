@@ -1,0 +1,18 @@
+<h1>New Tasks in Your Area</h1>
+
+<p>Hello <%= @volunteer.first_name %>,</p>
+
+<p>We have got some new tasks in <%= @volunteer.town %>, <%= @volunteer.county %>.</p>
+
+<ul>
+  <% @tasks.each do |task| %>
+    <li>
+      <strong><%= task.task_type %></strong> - <%= task.description %><br>
+      Location: <%= task.town %>
+    </li>
+  <% end %>
+</ul>
+
+<p>Log in to HandyHeroes to learn more and accept these tasks!</p>
+
+<p>Thank you,<br>The HandyHeroes Team</p>

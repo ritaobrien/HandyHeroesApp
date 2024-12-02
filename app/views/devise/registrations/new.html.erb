@@ -1,0 +1,293 @@
+<div class="container-fluid card-signup">
+    <br/>
+
+    
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+        
+            <h1 class=" text-center">
+            <span class="badge custom-border-badge">
+            <img src="<%= asset_path('links-white.png') %>" alt="Logo Left" class="badge-logo" style="width: 75px; height: 75px;">
+            Sign Up with Handy Heroes
+              
+              <img src="<%= asset_path('links-white.png') %>" alt="Logo Left" class="badge-logo" style="width: 75px; height: 75px;">
+            </span>
+          </h1>
+          <br />
+            <!-- Step 1: Role Selection -->
+            <div class="card formcard mb-3">
+                <div class="card-header lexend-cardtitle text-center">
+                    1. Are you a Senior or a Volunteer - click a picture below?
+                </div>
+                <div class="card-body text-center">
+                
+                    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                        <%= render "devise/shared/error_messages", resource: resource %>
+
+                        <div class="role-selection">
+                            <%= f.hidden_field :role, id: 'role-field' %>
+                            <!-- Senior Image -->
+                            <div class="role-option">
+                                <%= image_tag "senior_signup.png", class: "role-image", alt: "Senior", data: { role: "senior" }, id: "role-senior", style:"border-radius:10%;" %>
+                            </div>
+                            <!-- Volunteer Image -->
+                            <div class="role-option">
+                                <%= image_tag "volunteer_signup.png",  class: "role-image", alt: "Volunteer", data: { role: "volunteer" }, id: "role-volunteer", style:"border-radius:10%;" %>
+                            </div>
+
+                            
+                        </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Name Entry -->
+            <div class="card formcard mb-3">
+                <div class="card-header lexend-cardtitle text-center">
+                    2. Enter your name
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <%= f.label :first_name %><br />
+                        <%= f.text_field :first_name, class: 'form-control' %>
+                    </div>
+
+                    <div class="form-group">
+                        <%= f.label :last_name %><br />
+                        <%= f.text_field :last_name, class: 'form-control' %>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card formcard mb-3">
+            <div class="card-header lexend-cardtitle text-center">
+                2. Enter your telephone number
+            </div>
+            <div class="card-body">
+            <div class="form-group">
+            <%= f.label :telephone, "Telephone Number" %><br />
+            <%= f.telephone_field :telephone_number, class: 'form-control' %>
+        </div>
+
+                
+            </div>
+        </div>
+        <!-- Step 4: Email and Password Entry -->
+        <div class="card formcard mb-3">
+            <div class="card-header lexend-cardtitle text-center">
+                4. Enter your email address and choose a password
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <%= f.label :email %><br />
+                    <%= f.email_field :email, autocomplete: "email", class: "form-control" %>
+                </div>
+
+                <div class="form-group">
+                    <%= f.label :password %>
+                    <% if @minimum_password_length %>
+                        <em>(<%= @minimum_password_length %> characters minimum)</em>
+                    <% end %><br />
+                    <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+                </div>
+
+                <div class="form-group">
+                    <%= f.label :password_confirmation %><br />
+                    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+                </div><br/>
+            </div>
+        </div>
+            <!-- Step 3: Location Selection -->
+            <div class="card formcard mb-3">
+                <div class="card-header lexend-cardtitle text-center">
+                    3. Select your location
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <%= f.label :county %><br />
+                        <%= f.select :county, options_for_select([
+                            ['Antrim', 'Antrim'], ['Armagh', 'Armagh'], ['Carlow', 'Carlow'], ['Cavan', 'Cavan'], 
+                            ['Clare', 'Clare'], ['Cork', 'Cork'], ['Derry', 'Derry'], ['Donegal', 'Donegal'], 
+                            ['Down', 'Down'], ['Dublin', 'Dublin'], ['Fermanagh', 'Fermanagh'], ['Galway', 'Galway'], 
+                            ['Kerry', 'Kerry'], ['Kildare', 'Kildare'], ['Kilkenny', 'Kilkenny'], ['Laois', 'Laois'], 
+                            ['Leitrim', 'Leitrim'], ['Limerick', 'Limerick'], ['Longford', 'Longford'], ['Louth', 'Louth'], 
+                            ['Mayo', 'Mayo'], ['Meath', 'Meath'], ['Monaghan', 'Monaghan'], ['Offaly', 'Offaly'], 
+                            ['Roscommon', 'Roscommon'], ['Sligo', 'Sligo'], ['Tipperary', 'Tipperary'], 
+                            ['Tyrone', 'Tyrone'], ['Waterford', 'Waterford'], ['Westmeath', 'Westmeath'], 
+                            ['Wexford', 'Wexford'], ['Wicklow', 'Wicklow']
+                        ]), { prompt: 'Select County' }, id: 'user_county', class: 'form-control' %>
+                    </div>
+
+                    <div class="form-group">
+                        <%= f.label :town %><br />
+                        <%= f.select :town, options_for_select([]), { prompt: 'Select Nearest Area' }, id: 'town_select', class: 'form-control' %>
+                    </div>
+                </div>
+            </div>
+
+            
+
+            
+
+            <!-- Step 4: Volunteer-Only Document Uploads -->
+            <div class="card formcard mb-3" id="volunteer-docs" style="display: none;">
+                <div class="card-header lexend-cardtitle text-center">
+                    Volunteer ID Verification
+                </div>
+                <div class="card-body">
+                    <p class="text-center">Please upload a valid photo ID and an additional identification document to complete your registration.</p>
+                    
+                    
+                    <div class="form-group">
+                        <%= f.label :photo_id, "Upload Photo" %><br />
+                        <%= f.file_field :photo_id, class: 'form-control' %>
+                    </div>
+                    <div class="form-group">
+                        <%= f.label :id_document, "Upload ID" %><br />
+                        <%= f.file_field :id_document, class: 'form-control' %>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Step 5: Submit Button in New Card -->
+            <div class="card formcard mb-3">
+                <div class="card-header lexend-cardtitle text-center">
+                    5. Click Sign Up
+                </div>
+                <div class="card-body">
+                    <div class="actions text-center">
+                        <%= f.submit "Sign up", class: "btn", data: { turbo: false }  %>
+                        
+</div>
+                    </div>
+                </div>
+            </div>
+
+            <% end %> <!-- End of form_for -->
+            <br/>
+            <!-- Footer Links -->
+            <div class="card formcard mb-3">
+                <div class="card-footer text-center">
+                    <%= render "devise/shared/links" %>
+                </div>
+            </div>
+        </div>
+     <br/>
+    </div>
+    <br/>
+   
+    
+      
+</div>
+
+<script>
+
+document.addEventListener("turbo:load", function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+                
+    const submitButton = document.getElementById("form-submit-button");
+  const spinnerContainer = document.getElementById("spinner-container");
+
+  if (submitButton && spinnerContainer) {
+    submitButton.addEventListener("click", function () {
+      // Show the spinner
+      spinnerContainer.style.display = "block";
+
+      // Optionally disable the submit button to prevent multiple submissions
+      submitButton.disabled = true;
+    });
+  }
+   
+
+    const countyToTowns = {
+        'Antrim': ['Antrim Town', 'Ballymena', 'Carrickfergus', 'Larne', 'Newtownabbey'],
+        'Armagh': ['Armagh City', 'Newry', 'Lurgan', 'Portadown', 'Craigavon'],
+        'Carlow': ['Carlow Town', 'Bagenalstown', 'Hacketstown', 'Leighlinbridge', 'Tullow'],
+        'Cavan': ['Cavan Town', 'Virginia', 'Bailieborough', 'Kingscourt', 'Ballyjamesduff'],
+        'Clare': ['Ennis', 'Shannon', 'Kilrush', 'Newmarket-on-Fergus', 'Kilkee'],
+        'Cork': ['Cork City', 'Cobh', 'Youghal', 'Fermoy', 'Mallow'],
+        'Derry': ['Derry City', 'Coleraine', 'Limavady', 'Magherafelt', 'Portstewart'],
+        'Donegal': ['Letterkenny', 'Buncrana', 'Ballybofey', 'Carndonagh', 'Donegal Town'],
+        'Down': ['Bangor', 'Dundonald', 'Lisburn', 'Newry', 'Newtownards'],
+        'Dublin': ['D1', 'D2', 'D3', 'D4', 'D5', 'D6', 'D6W', 'D7', 'D8', 'D9', 'D10', 'D11', 'D12', 'D13', 'D14', 'D15', 'D16', 'D17', 'D18', 'D20', 'D22', 'D24'],
+        'Fermanagh': ['Enniskillen', 'Lisnaskea', 'Ballinamallard', 'Irvinestown', 'Kesh'],
+        'Galway': ['Galwa City', 'Tuam', 'Ballinasloe', 'Loughrea', 'Oranmore'],
+        'Kerry': ['Tralee', 'Killarney', 'Listowel', 'Castleisland', 'Kenmare'],
+        'Kildare': ['Naas', 'Newbridge', 'Celbridge', 'Maynooth', 'Leixlip'],
+        'Kilkenny': ['Kilkenny City', 'Thomastown', 'Castlecomer', 'Graiguenamanagh', 'Callan'],
+        'Laois': ['Portlaoise', 'Portarlington', 'Mountmellick', 'Mountrath', 'Abbeyleix'],
+        'Leitrim': ['Carrick-on-Shannon', 'Manorhamilton', 'Kinlough', 'Ballinamore,', 'Drumshanbo'],
+        'Limerick': ['Limerick City', 'Newcastle West', 'Annacotty', 'Castleconnell', 'Abbeyfeale'],
+        'Longford': ['Longford Town', 'Edgeworthstown', 'Ballymahon', 'Lanesborough', 'Granard'],
+        'Louth': ['Drogheda', 'Dundalk', 'Ardee', 'Clogherhead', 'Dunleer'],
+        'Mayo': ['Castlebar', 'Ballina', 'Westport', 'Claremorris', 'Ballinrobe'],
+        'Meath': ['Navan', 'Ashbourne', 'Laytown', 'Ratoath', 'Trim'],
+        'Monaghan': ['Monaghan Town', 'Carrickmacross', 'Castleblayney', 'Clones', 'Ballybay '],
+        'Offaly': ['Tullamore', 'Edenderry', 'Birr', 'Clara', 'Bannagher'],
+        'Roscommon': ['Roscommon Town', 'Boyle', 'Ballaghaderreen', 'Castlerea', 'Strokestown'],
+        'Sligo': ['Sligo Town', 'Tubbercurry', 'Strandhill', 'Collooney', 'Ballysadare'],
+        'Tipperary': ['Clonmel', 'Nenagh', 'Thurles', 'Carrick on Suir', 'Tipperary Town'],
+        'Tyrone': ['Omagh', 'Cookstown', 'Dungannon', 'Strabane', 'Coalisland'],
+        'Waterford': ['Waterford City', 'Tramore', 'Dungarvan', 'Portlaw', 'Dunmore East'],
+        'Westmeath': ['Mullingar', 'Kinnegad', 'Moate', 'Kilbeggan', 'Castlepollard'],
+        'Wexford': ['Wexford Town', 'Enniscorthy', 'Gorey', 'New Ross', 'Courtown'],
+        'Wicklow': ['Bray', 'Greystones', 'Arklow', 'Wicklow Town', 'Blessington']
+    };
+
+    const countySelect = document.getElementById('user_county');
+    const townSelect = document.getElementById('town_select');
+    const volunteerDocs = document.getElementById("volunteer-docs");
+    const roleField = document.getElementById("role-field");
+
+    // Populate towns based on selected county
+    countySelect.addEventListener('change', function() {
+        const selectedCounty = countySelect.value;
+
+        // Clear current town options
+        townSelect.innerHTML = '<option value="">Select Nearest Area</option>';
+
+        if (selectedCounty && countyToTowns[selectedCounty]) {
+            // Populate town options based on selected county
+            countyToTowns[selectedCounty].forEach(function(town) {
+                const option = document.createElement('option');
+                option.value = town;
+                option.text = town;
+                townSelect.add(option);
+            });
+        }
+    });
+
+    // Handle role selection (Senior or Volunteer)
+    document.querySelectorAll('.role-image').forEach(item => {
+        item.addEventListener('click', event => {
+            const selectedRole = event.target.dataset.role;
+            roleField.value = selectedRole;
+
+            // Show or hide volunteer docs section based on selected role
+            if (selectedRole === "volunteer") {
+                volunteerDocs.style.display = "block";
+            } else {
+                volunteerDocs.style.display = "none";
+            }
+
+            // Add styling to highlight selected role
+            document.querySelectorAll('.role-image').forEach(image => {
+                image.classList.remove('selected');
+            });
+            item.classList.add('selected');
+        });
+    });
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
