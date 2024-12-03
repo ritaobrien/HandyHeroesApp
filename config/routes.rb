@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root "home#index"
 
   # Devise user authentication routes
-  devise_for :users, controllers: { registrations: 'users/registrations' }
+  devise_for :users
 
   # Home controller custom routes
   get 'home/howitworks'
