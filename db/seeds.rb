@@ -7,3 +7,9 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+User.find_or_create_by!(email: "ritateresaobrien@hmail.com") do |user|
+    user.password = "123456" # Replace with a strong password
+    user.role = "admin" # Ensure this matches your enum or role logic
+  end
+  
+  puts "Admin user created or updated successfully!"
